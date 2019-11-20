@@ -48,9 +48,52 @@
 //
 // returns ['Beth Jr. Johnson', 'Joshie Wyattson'];
 
-
+function each(coll, f) {
+    if (Array.isArray(coll)) {
+      for (var i = 0; i < coll.length; i++) {
+        f(coll[i], i);
+      }
+    } else {
+      for (var key in coll) {
+        f(coll[key], key);
+      }
+    }
+  }
+  
+  function filter(coll, predicate) {
+var acc = []; 
+ 	 if(!Array.isArray(coll)){ 
+ 	 	 acc = {}; 
+ 	 } 
+ 	 each(coll, function(value, key) { 
+ 	 	 if (predicate(value, key)) { 
+ 	 	 	 if(Array.isArray(coll)){ 
+ 	 	 	 	 acc.push(value); 
+ 	 	 } else { 
+ 	 	 	 acc[key] = value; 
+ 	 	 } 
+ 	 	 } 
+ 	 }); 
+ 	 return acc; 
+ 	}
 
 var filterFamilyMembers = function (familyTree, truthTest) {
   // All your code in this function body
+  var members = function (familyTree) {
+  	for (var key in familyTree ) {
+  		  if ( this.children === undefined ) {
+  		  	  return  members (familyTree) 
+  		  } 
+  	}
+  }
+
+  return  filter(members,function(familyTree,member){ 
+ 	 	 return family ; 
+ 	 }) 
+
+
 };
+
+
+ 
 
